@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection.Metadata;
 using Linq.DataSources;
 
 namespace Linq
@@ -19,8 +21,7 @@ namespace Linq
         public static IEnumerable<int> LowNumbers()
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
-
-            throw new NotImplementedException();
+            return numbers.Where(x => x < 5);
         }
 
         /// <summary>
@@ -30,8 +31,7 @@ namespace Linq
         public static IEnumerable<Product> ProductsOutOfStock()
         {
             List<Product> products = Products.ProductList;
-
-            throw new NotImplementedException();
+            return products.Where(product => product.UnitsInStock == 0);
         }
 
         /// <summary>
@@ -41,8 +41,7 @@ namespace Linq
         public static IEnumerable<Product> ExpensiveProductsInStock()
         {
             List<Product> products = Products.ProductList;
-
-            throw new NotImplementedException();
+            return products.Where(product => product.UnitsInStock > 0 && product.UnitPrice > 50);
         }
 
         /// <summary>
@@ -52,8 +51,7 @@ namespace Linq
         public static IEnumerable<string> IndexedWhere()
         {
             string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
-
-            throw new NotImplementedException();
+            return digits.Where((element, index) => element.Length < index);
         }
     }
 }
