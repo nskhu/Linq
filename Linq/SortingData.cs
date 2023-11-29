@@ -23,7 +23,7 @@ namespace Linq
         {
             string[] words = { "cherry", "apple", "blueberry" };
 
-            throw new NotImplementedException();
+            return words.OrderBy(word => word);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Linq
         {
             string[] words = { "cherry", "apple", "blueberry" };
 
-            throw new NotImplementedException();
+            return words.OrderBy(word => word.Length);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Linq
         {
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return products.OrderBy(product => product.ProductName);
         }
 
 
@@ -57,7 +57,7 @@ namespace Linq
         {
             string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            throw new NotImplementedException();
+            return words.OrderBy(word => word.ToLower());
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Linq
         {
             double[] doubles = { 1.7, 2.3, 1.9, 4.1, 2.9 };
 
-            throw new NotImplementedException();
+            return doubles.OrderByDescending(num => num);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Linq
         {
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return products.OrderByDescending(prod => prod.UnitsInStock);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Linq
         {
             string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            throw new NotImplementedException();
+            return words.OrderByDescending(word => word);
         }
 
         /// <summary>
@@ -101,7 +101,8 @@ namespace Linq
         {
             string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-            throw new NotImplementedException();
+            return digits.OrderBy(word => word.Length)
+                .ThenBy(word => word);
         }
 
         /// <summary>
@@ -112,7 +113,8 @@ namespace Linq
         {
             string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            throw new NotImplementedException();
+            return words.OrderBy(word => word.Length)
+                .ThenBy(word => word.ToLower());
         }
 
         /// <summary>
@@ -123,7 +125,8 @@ namespace Linq
         {
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return products.OrderBy(prod => prod.Category)
+                .ThenByDescending(prod => prod.UnitPrice);
         }
 
         /// <summary>
@@ -134,7 +137,8 @@ namespace Linq
         {
             string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
 
-            throw new NotImplementedException();
+            return words.OrderBy (word => word.Length)
+                .ThenByDescending (word => word.ToLower());
         }
 
         /// <summary>
@@ -145,7 +149,8 @@ namespace Linq
         {
             string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-            throw new NotImplementedException();
+            return digits.Where(digit => digit[1] == 'i')
+                .Reverse();
         }
     }
 }
