@@ -21,6 +21,7 @@ namespace Linq
         public static IEnumerable<int> LowNumbers()
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
+
             return numbers.Where(x => x < 5);
         }
 
@@ -31,6 +32,7 @@ namespace Linq
         public static IEnumerable<Product> ProductsOutOfStock()
         {
             List<Product> products = Products.ProductList;
+
             return products.Where(product => product.UnitsInStock == 0);
         }
 
@@ -41,6 +43,7 @@ namespace Linq
         public static IEnumerable<Product> ExpensiveProductsInStock()
         {
             List<Product> products = Products.ProductList;
+
             return products.Where(product => product.UnitsInStock > 0 && product.UnitPrice > 50);
         }
 
@@ -51,6 +54,7 @@ namespace Linq
         public static IEnumerable<string> IndexedWhere()
         {
             string[] digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+
             return digits.Where((element, index) => element.Length < index);
         }
     }
