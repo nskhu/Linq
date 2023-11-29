@@ -182,8 +182,6 @@ namespace Linq
         {
             List<Customer> customers = Customers.CustomerList;
 
-            // "Customer #91 has an order with OrderID 10998",
-            // "Customer #91 has an order with OrderID 11044",
             return customers.SelectMany(
                     (customer, index) => customer.Orders.Select(
                         order => $"Customer #{index + 1} has an order with OrderID {order.OrderId}"
