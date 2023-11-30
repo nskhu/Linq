@@ -22,7 +22,7 @@ namespace Linq
         {
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return products.First(prod => prod.ProductId == 11);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Linq
         {
             string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-            throw new NotImplementedException();
+            return strings.First(str => str.StartsWith('o'));
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Linq
         {
             int[] numbers = { };
 
-            throw new NotImplementedException();
+            return numbers.FirstOrDefault();
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Linq
         {
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return products.FirstOrDefault(prod => prod.ProductId == 789);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Linq
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
-            throw new NotImplementedException();
+            return numbers.Where(num => num > 5).ElementAt(1);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Linq
         {
             string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-            throw new NotImplementedException();
+            return strings.Where(str => str.Contains('o')).Last();
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Linq
         {
             int[] numbers = { };
 
-            throw new NotImplementedException();
+            return numbers.LastOrDefault();
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Linq
         {
             string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-            throw new NotImplementedException();
+            return strings.Single(str => str.Contains('o'));
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Linq
         {
             string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-            throw new NotImplementedException();
+            return strings.Single(str => str.Contains('o'));
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Linq
         {
             string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-            throw new NotImplementedException();
+            return strings.SingleOrDefault(str => str.Contains('k'));
         }
     }
 }
