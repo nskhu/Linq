@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Linq.DataSources;
 
 namespace Linq
@@ -20,7 +22,7 @@ namespace Linq
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
-            throw new NotImplementedException();
+            return numbers.Take(3);
         }
 
         /// <summary>
@@ -31,7 +33,11 @@ namespace Linq
         {
             List<Customer> customers = Customers.CustomerList;
 
-            throw new NotImplementedException();
+            return customers.Where(customer => customer.Region == "WA")
+                .SelectMany(
+                    customer => customer.Orders.Select(order => order),
+                    (customer, order) => (customer.CustomerId, order.OrderId, order.OrderDate)
+                ).Take(3);
         }
 
         /// <summary>
@@ -42,7 +48,7 @@ namespace Linq
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
-            throw new NotImplementedException();
+            return numbers.Skip(4);
         }
 
         /// <summary>
@@ -53,7 +59,11 @@ namespace Linq
         {
             List<Customer> customers = Customers.CustomerList;
 
-            throw new NotImplementedException();
+            return customers.Where(customer => customer.Region == "WA")
+                .SelectMany(
+                customer => customer.Orders.Select(order => order),
+                (customer, order) => (customer.CustomerId, order.OrderId, order.OrderDate)
+                ).Skip(2);
         }
 
         /// <summary>
@@ -64,7 +74,7 @@ namespace Linq
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
-            throw new NotImplementedException();
+            return numbers.TakeWhile(x => x < 6);
         }
 
         /// <summary>
@@ -75,7 +85,7 @@ namespace Linq
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
-            throw new NotImplementedException();
+            return numbers.TakeWhile((num, index) => num >= index + 1);
         }
 
         /// <summary>
@@ -86,7 +96,7 @@ namespace Linq
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
-            throw new NotImplementedException();
+            return numbers.SkipWhile(number => number % 3 != 0);
         }
 
         /// <summary>
@@ -97,7 +107,7 @@ namespace Linq
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
-            throw new NotImplementedException();
+            return numbers.SkipWhile((num, index) => num >= index + 1);
         }
     }
 }
