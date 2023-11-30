@@ -18,7 +18,7 @@ namespace Linq
         {
             double[] doubles = { 1.7, 2.3, 1.9, 4.1, 2.9 };
 
-            throw new NotImplementedException();
+            return doubles.OrderByDescending(x => x).ToArray();
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace Linq
         {
             string[] words = { "cherry", "apple", "blueberry" };
 
-            throw new NotImplementedException();
+            return words.OrderBy(x => x).ToList();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Linq
                 (Name: "Cathy", Score: 45)
             };
 
-            throw new NotImplementedException();
+            return scoreRecords.ToDictionary(scoreRecord => scoreRecord.Name);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Linq
         {
             object[] numbers = { null, 1.0, "two", 3, "four", 5, "six", 7.0 };
 
-            throw new NotImplementedException();
+            return numbers.OfType<double>();
         }
     }
 }
