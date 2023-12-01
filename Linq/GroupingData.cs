@@ -21,7 +21,7 @@ namespace Linq
         {
             string[] words = { "blueberry", "chimpanzee", "abacus", "banana", "apple", "cheese" };
 
-            throw new NotImplementedException();
+            return words.GroupBy(word => word[0]).OrderBy(group => group.Key);
         }
 
         /// <summary>
@@ -32,7 +32,8 @@ namespace Linq
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
-            throw new NotImplementedException();
+            return numbers.GroupBy(num => num % 5)
+                .Select(group => (group.Key, (IEnumerable<int>)group));
         }
 
         /// <summary>
@@ -43,7 +44,9 @@ namespace Linq
         {
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return products.GroupBy(prod => prod.Category)
+                .Where(group => group.Count() <= 7)
+                .Select(group => (group.Key, group.Select(prod => prod.ProductName)));
         }
 
         /// <summary>
@@ -55,7 +58,7 @@ namespace Linq
             string[] anagrams =
                 {"from   ", "  mane", " salt", " earn ", "name   ", "  last   ", " near ", " form  ", "mean"};
 
-            throw new NotImplementedException();
+            return anagrams.GroupBy(word => word.Trim(), new AnagramEqualityComparer());
         }
 
         /// <summary>
@@ -67,7 +70,7 @@ namespace Linq
             string[] anagrams =
                 {"from   ", "  mane", " salt", " earn ", "name   ", "  last   ", " near ", " form  ", "mean"};
 
-            throw new NotImplementedException();
+            return anagrams.GroupBy(word => word.Trim(), word => word.ToUpperInvariant(), new AnagramEqualityComparer());
         }
     }
 }
