@@ -21,7 +21,7 @@ namespace Linq
         {
             int[] numbers = { 2, 2, 3, 5, 5 };
 
-            throw new NotImplementedException();
+            return numbers.Count();
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Linq
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
-            throw new NotImplementedException();
+            return numbers.Count(num => num % 2 != 0);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Linq
         {
             List<Customer> customers = Customers.CustomerList;
 
-            throw new NotImplementedException();
+            return customers.Select(customer => (customer.CustomerId, customer.Orders.Count()));
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Linq
         {
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return products.GroupBy(prod => prod.Category).Select(group => (group.Key, group.ToList().Count()));
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Linq
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
-            throw new NotImplementedException();
+            return numbers.Sum();
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Linq
         {
             string[] words = { "cherry", "apple", "blueberry" };
 
-            throw new NotImplementedException();
+            return words.Sum(word => word.Length);
         }
 
         /// <summary>
@@ -87,7 +87,8 @@ namespace Linq
         {
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return products.GroupBy(prod => prod.Category)
+                .Select(gr => (gr.Key, gr.ToList().Sum(prod => prod.UnitsInStock)));
         }
 
         /// <summary>
@@ -98,7 +99,7 @@ namespace Linq
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
-            throw new NotImplementedException();
+            return numbers.Min();
         }
 
         /// <summary>
@@ -109,7 +110,7 @@ namespace Linq
         {
             string[] words = { "cherry", "apple", "blueberry" };
 
-            throw new NotImplementedException();
+            return words.Min(word => word.Length);
         }
 
         /// <summary>
@@ -120,7 +121,8 @@ namespace Linq
         {
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return products.GroupBy(products => products.Category)
+                .Select(gr => (gr.Key, gr.ToList().Min(prod => prod.UnitPrice)));
         }
 
         /// <summary>
@@ -131,7 +133,7 @@ namespace Linq
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
-            throw new NotImplementedException();
+            return numbers.Max();
         }
 
         /// <summary>
@@ -142,7 +144,7 @@ namespace Linq
         {
             string[] words = { "cherry", "apple", "blueberry" };
 
-            throw new NotImplementedException();
+            return words.Max(word => word.Length);
         }
 
         /// <summary>
@@ -153,7 +155,8 @@ namespace Linq
         {
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return products.GroupBy(products => products.Category)
+                .Select(gr => (gr.Key, gr.ToList().Max(prod => prod.UnitPrice)));
         }
 
         /// <summary>
@@ -164,7 +167,7 @@ namespace Linq
         {
             int[] numbers = { 5, 4, 1, 3, 9, 8, 6, 7, 2, 0 };
 
-            throw new NotImplementedException();
+            return numbers.Average();
         }
 
         /// <summary>
@@ -175,7 +178,7 @@ namespace Linq
         {
             string[] words = { "cherry", "apple", "blueberry" };
 
-            throw new NotImplementedException();
+            return words.Average(word => word.Length);
         }
 
         /// <summary>
@@ -186,7 +189,8 @@ namespace Linq
         {
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return products.GroupBy(products => products.Category)
+                .Select(gr => (gr.Key, gr.ToList().Average(prod => prod.UnitPrice)));
         }
 
         /// <summary>
@@ -197,7 +201,7 @@ namespace Linq
         {
             double[] doubles = { 1.7, 2.3, 1.9, 4.1, 2.9 };
 
-            throw new NotImplementedException();
+            return doubles.Aggregate((acc, num) => acc * num);
         }
 
         /// <summary>
@@ -210,7 +214,7 @@ namespace Linq
 
             int[] attemptedWithdrawals = { 20, 10, 40, 50, 10, 70, 30 };
 
-            throw new NotImplementedException();
+            return attemptedWithdrawals.Aggregate(startBalance, (acc, x) => acc - x < 0 ? acc : acc - x);
         }
     }
 }
