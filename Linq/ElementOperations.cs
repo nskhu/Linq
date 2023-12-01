@@ -128,7 +128,15 @@ namespace Linq
         {
             string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
 
-            return strings.SingleOrDefault(str => str.Contains('k'));
+            //return strings.SingleOrDefault(str => str.Contains('k'));
+            try
+            {
+                return strings.Single(x => x.Contains("o"));
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
         }
     }
 }
