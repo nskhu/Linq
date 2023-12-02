@@ -23,7 +23,7 @@ namespace Linq
             var wordsA = new[] { "cherry", "apple", "blueberry" };
             var wordsB = new[] { "cherry", "apple", "blueberry" };
 
-            throw new NotImplementedException();
+            return wordsA.SequenceEqual(wordsB);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Linq
             var wordsA = new[] { "cherry", "apple", "blueberry" };
             var wordsB = new[] { "apple", "blueberry", "cherry" };
 
-            throw new NotImplementedException();
+            return wordsA.SequenceEqual(wordsB);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Linq
         {
             string[] words = { "believe", "relief", "receipt", "field" };
 
-            throw new NotImplementedException();
+            return words.Any(word => word.Contains("ei"));
         }
 
         /// <summary>
@@ -57,7 +57,10 @@ namespace Linq
         {
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return products
+                .GroupBy(prod => prod.Category)
+                .Where(group => group.Any(prod => prod.UnitsInStock == 0))
+                .Select(group => (group.Key, (IEnumerable<Product>)group.ToList()));
         }
 
         /// <summary>
@@ -68,7 +71,7 @@ namespace Linq
         {
             int[] numbers = { 1, 11, 3, 19, 41, 65, 19 };
 
-            throw new NotImplementedException();
+            return numbers.All(num => num % 2 != 0);
         }
 
         /// <summary>
@@ -79,7 +82,10 @@ namespace Linq
         {
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return products
+                .GroupBy(prod => prod.Category)
+                .Where(group => group.All(prod => prod.UnitsInStock > 0))
+                .Select(group => (group.Key, (IEnumerable<Product>)group.ToList()));
         }
 
         /// <summary>
@@ -90,7 +96,7 @@ namespace Linq
         {
             int[] numbers = { 2, 3, 4 };
 
-            throw new NotImplementedException();
+            return numbers.Contains(3);
         }
     }
 }

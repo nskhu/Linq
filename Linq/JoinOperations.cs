@@ -31,7 +31,7 @@ namespace Linq
 
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return categories.Join(products, category => category, prod => prod.Category, (category, prod)  => (category, prod.ProductName));
         }
 
         /// <summary>
@@ -51,7 +51,11 @@ namespace Linq
 
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return categories.GroupJoin(
+                products, 
+                category => category, 
+                prod => prod.Category, 
+                (category, prods) => (category, prods));
         }
 
         /// <summary>
@@ -73,7 +77,12 @@ namespace Linq
 
             List<Product> products = Products.ProductList;
 
-            throw new NotImplementedException();
+            return categories.GroupJoin(
+                products,
+                category => category,
+                prod => prod.Category,
+                (category, prods) => (category, prods.DefaultIfEmpty(new Product { ProductName = "(No products)" }).Select(prod => prod.ProductName).First())
+                );
         }
     }
 }
