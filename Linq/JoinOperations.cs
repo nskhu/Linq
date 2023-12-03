@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using Linq.DataSources;
 
 namespace Linq
@@ -78,11 +79,15 @@ namespace Linq
             List<Product> products = Products.ProductList;
 
             return categories.GroupJoin(
-                products,
-                category => category,
-                prod => prod.Category,
-                (category, prods) => (category, prods.DefaultIfEmpty(new Product { ProductName = "(No products)" }).Select(prod => prod.ProductName).First())
-                );
+                                    products,
+                                    cat => cat,
+                                    prod => prod.Category,
+                                    (cat, prod) => new { cat, prod }
+                              )
+                              .SelectMany(
+                                    x => x.prod.DefaultIfEmpty(),
+                                    (cat, prod) => (category: cat.cat, productName: prod?.ProductName ?? "(No products)")
+                              );
         }
     }
 }
